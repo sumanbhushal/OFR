@@ -27,28 +27,20 @@ namespace OFR
         {
            
             InitializeComponent();
-            FloaterImagerController floaterImager = new FloaterImagerController();
+            FloaterImagerController floaterImagerController = new FloaterImagerController();
 
-            FloaterImage floaterImage = new FloaterImage();
-
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(floaterImager.GenerateImageSourceUri("black_dots.png"));
-            image.EndInit();
-            image1.Source = image;
-
+            FloaterImage floaterImageModel = new FloaterImage();
             
+            var image1 = floaterImagerController.ImagerLoader();
+
             //floaterImage.Id = 100;
             //floaterImage.ImageName = floaterImager.GenerateImageSourceUri("black_dots.png");
-            
-            this.DataContext = floaterImage;
 
-        }
-
-        private void GridMain()
-        {
             
+            Grid.SetColumn(image1, 4);
+            Grid.SetRow(image1, 3);
+            mainGrid.Children.Add(image1);
+            //this.DataContext = floaterImage;
         }
     }
-
 }
