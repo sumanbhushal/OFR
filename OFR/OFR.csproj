@@ -60,6 +60,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\FloaterImagerController.cs" />
+    <Compile Include="Model\FloaterImage.cs" />
     <Compile Include="Win32.cs" />
     <Page Include="DesktopScreen.xaml">
       <SubType>Designer</SubType>
@@ -109,7 +111,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Include\black_dots.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Include\ico.png" />
   </ItemGroup>
