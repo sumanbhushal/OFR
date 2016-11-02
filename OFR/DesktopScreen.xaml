@@ -1,0 +1,21 @@
+﻿<Window x:Class="OFR.DesktopScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OFR"
+        mc:Ignorable="d"
+        Title="DesktopScreen" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        WindowState="Maximized"
+        Background="Transparent"
+        Topmost="True">
+    <!--<Window.Background>
+        <SolidColorBrush Opacity="0.01" Color="White"/>
+    </Window.Background>-->
+    <Grid>
+        <Label x:Name="label" Content="OFR" HorizontalAlignment="Left" Margin="128,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.312,-4.038"/>
+        
+    </Grid>
+</Window>
