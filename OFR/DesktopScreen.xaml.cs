@@ -31,15 +31,20 @@ namespace OFR
 
             FloaterImage floaterImageModel = new FloaterImage();
             
-            var image1 = floaterImagerController.ImagerLoader();
+            
 
             //floaterImage.Id = 100;
             //floaterImage.ImageName = floaterImager.GenerateImageSourceUri("black_dots.png");
-
-            
-            Grid.SetColumn(image1, 4);
-            Grid.SetRow(image1, 3);
-            mainGrid.Children.Add(image1);
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    var image1 = floaterImagerController.ImagerLoader();
+                    Grid.SetColumn(image1, i);
+                    Grid.SetRow(image1, j);
+                    mainGrid.Children.Add(image1);
+                }
+            }
             //this.DataContext = floaterImage;
         }
     }
