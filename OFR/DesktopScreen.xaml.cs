@@ -40,6 +40,9 @@ namespace OFR
                 for (int j = 0; j < 6; j++)
                 {
                     var image1 = floaterImagerController.ImagerLoader();
+                    //floaterImagerController.RotationAnimation(image1);
+                    //floaterImagerController.SkewAnimation(image1);
+                    floaterImagerController.FadeInOutAnimation(image1);
                     Grid.SetColumn(image1, i);
                     Grid.SetRow(image1, j);
                     mainGrid.Children.Add(image1);
