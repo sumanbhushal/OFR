@@ -23,7 +23,7 @@ namespace OFR.Controller
         public Image ImagerLoader()
         {
             Image imageToReturn = new Image();
-            imageToReturn.Opacity = 0.15;
+            imageToReturn.Opacity = 0.18;
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri(GenerateImageSourceUri("black_dots.png"));
@@ -71,19 +71,55 @@ namespace OFR.Controller
             DoubleAnimation da = new DoubleAnimation
             {
                 From = 0,
-                To = 0.3,
+                To = 0.25,
                 AutoReverse = true,
                 Duration = new Duration(TimeSpan.FromSeconds(2.5)),
                 RepeatBehavior = RepeatBehavior.Forever
             };
-            //imageForAnimation.BeginAnimation("Opicity",da);
+
             Storyboard.SetTarget(da, imageForAnimation);
-            Storyboard.SetTargetProperty(da, new PropertyPath("Opacity", 0.3));
+            Storyboard.SetTargetProperty(da, new PropertyPath("Opacity", 0.25));
             Storyboard sb = new Storyboard();
             sb.Children.Add(da);
             sb.Begin(imageForAnimation);
 
-            //imageForAnimation.BeginAnimation(new PropertyPath(imageForAnimation.Opacity, 1), da);
+            }
+
+        public void CombineRotationWithSkewAnimation(Image imageForAnimation)
+        {
+            //Define DoubleAnimation for Translate Transform
+            DoubleAnimation daTranslateX = GenerateDoubleAnimation(300,60);
+            DoubleAnimation daTranslateY = GenerateDoubleAnimation(300,60);
+
+            DoubleAnimation daRotate = GenerateDoubleAnimation(360,60);
+           
+            //RotateTransform rt = new RotateTransform();
+            //imageForAnimation.RenderTransform = rt;
+            //imageForAnimation.RenderTransformOrigin = new Point(0.75, 0.75);
+            //rt.BeginAnimation(RotateTransform.AngleProperty, daRotate);
+            //rt.BeginAnimation(RotateTransform.CenterXProperty, daTranslateX);
+            //rt.BeginAnimation(RotateTransform.CenterYProperty, daTranslateY);
+
+            DoubleAnimation daSkewX = GenerateDoubleAnimation(43,30);
+            DoubleAnimation daSkewY = GenerateDoubleAnimation(43,30);
+            
+            imageForAnimation.RenderTransform = new SkewTransform();
+            imageForAnimation.RenderTransform.BeginAnimation(SkewTransform.AngleXProperty, daSkewX);
+            imageForAnimation.RenderTransform.BeginAnimation(SkewTransform.AngleYProperty, daSkewY);
+
+        }
+    
+
+        DoubleAnimation GenerateDoubleAnimation(int max, double time)
+        {
+            DoubleAnimation da = new DoubleAnimation();
+            da.From = 0;
+            da.To = max;
+            da.AutoReverse = true;
+            da.Duration = new Duration(TimeSpan.FromSeconds(time));
+            da.RepeatBehavior = RepeatBehavior.Forever;
+
+            return da;
         }
     }
 }

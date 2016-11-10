@@ -35,14 +35,14 @@ namespace OFR
 
             //floaterImage.Id = 100;
             //floaterImage.ImageName = floaterImager.GenerateImageSourceUri("black_dots.png");
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     var image1 = floaterImagerController.ImagerLoader();
                     //floaterImagerController.RotationAnimation(image1);
                     //floaterImagerController.SkewAnimation(image1);
-                    floaterImagerController.FadeInOutAnimation(image1);
+                    floaterImagerController.CombineRotationWithSkewAnimation(image1);
                     Grid.SetColumn(image1, i);
                     Grid.SetRow(image1, j);
                     mainGrid.Children.Add(image1);
