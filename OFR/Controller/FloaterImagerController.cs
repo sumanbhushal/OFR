@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using WpfAnimatedGif;
 
 namespace OFR.Controller
 {
@@ -120,6 +121,21 @@ namespace OFR.Controller
             da.RepeatBehavior = RepeatBehavior.Forever;
 
             return da;
+        }
+
+        public Image LoadAnimationImage(string imageName)
+        {
+            Image imageToReturn = new Image();
+            imageToReturn.Opacity = 0.18;
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(GenerateImageSourceUri(imageName));
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(imageToReturn, image);
+            //imageToReturn.Source = image;
+
+            //return RotationAnimation(imageToReturn);
+            return imageToReturn;
         }
     }
 }
