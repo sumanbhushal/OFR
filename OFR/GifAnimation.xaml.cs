@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OFR.Controller;
+using System.Windows.Forms;
 
 namespace OFR
 {
@@ -20,15 +21,17 @@ namespace OFR
     /// </summary>
     public partial class GifAnimation : Window
     {
+        private System.Windows.Forms.NotifyIcon notifyIcon = null;
+
         public GifAnimation()
         {
             InitializeComponent();
             FloaterImagerController floaterImagerController = new FloaterImagerController();
 
             
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < 11; j++)
                 {
                     var floaterImage = floaterImagerController.LoadAnimationImage("blackdots.gif");
                     //floaterImagerController.CombineRotationWithSkewAnimation(floaterImage);
