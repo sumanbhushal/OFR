@@ -19,10 +19,28 @@
             </DockPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*">
+                    </ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            </Grid>
+                <TextBox Name="PreviewImage"></TextBox>
+            <!--<Image Source="Include/ico.png" Name="PreviewImage" Grid.Column="0" Height="350" HorizontalAlignment="Left" Margin="60,0,0,0"></Image>-->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                <ListBox Name="LboxItem" SelectionMode="Single" SelectionChanged="LboxItemSelectionChanged">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBoxItem>Pic1
+                        <!--<Image Source="Include/ico.png"  Height="100" Width="100"></Image>-->
+                    </ListBoxItem>
+                    <ListBoxItem>pic2
+                        <!--<Image Source="Include/black_dots.png" Height="100" Width="100"></Image>-->
+                    </ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </Grid>
             
         </StackPanel>
         

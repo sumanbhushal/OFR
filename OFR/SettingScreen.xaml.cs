@@ -23,5 +23,11 @@ namespace OFR
         {
             InitializeComponent();
         }
+
+        private void LboxItemSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxItem lbi = ((sender as ListBox).SelectedItems as ListBoxItem);
+            PreviewImage.Text = lbi.Content.ToString();
+        }
     }
 }
