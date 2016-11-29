@@ -25,6 +25,7 @@ namespace OFR.Controller
         {
             Image imageToReturn = new Image();
             imageToReturn.Opacity = 0.18;
+            imageToReturn.Stretch = Stretch.UniformToFill;
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri(GenerateImageSourceUri("black_dots.png"));

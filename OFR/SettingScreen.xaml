@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:OFR"
         mc:Ignorable="d"
         Title="Setting"
+        Icon="Include/ico.png"
         WindowState="Maximized"
-        MinHeight="750"
-        MinWidth="520">
+        MinHeight="620"
+        MinWidth="520"
+        Background="Black">
     
         <StackPanel>
             <DockPanel LastChildFill="False">
@@ -17,14 +19,29 @@
                     <TextBlock Text="Optical Floater Remover"></TextBlock>
                 </StackPanel>
             </DockPanel>
-            <Grid>
+            <Grid x:Name="ImageGrid" Height="520">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*">
                     </ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-                <TextBox Name="PreviewImage"></TextBox>
-            <!--<Image Source="Include/ico.png" Name="PreviewImage" Grid.Column="0" Height="350" HorizontalAlignment="Left" Margin="60,0,0,0"></Image>-->
+                <Border x:Name="ImageBorder" BorderBrush="Blue" BorderThickness="2">
+                    <Grid x:Name="Gride4X4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </Border>
+            <!--<Image Source="{Binding DisplaySelectImagePath}" Name="PreviewImage" Grid.Column="0" Height="350" HorizontalAlignment="Left" Margin="60,0,0,0"></Image>-->
             <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                 <ListBox Name="LboxItem" SelectionMode="Single" SelectionChanged="LboxItemSelectionChanged">
                     <ListBox.ItemsPanel>
@@ -32,11 +49,18 @@
                             <WrapPanel Orientation="Horizontal"></WrapPanel>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    <ListBoxItem>Pic1
-                        <!--<Image Source="Include/ico.png"  Height="100" Width="100"></Image>-->
+                    <ListBoxItem>
+                        <StackPanel>
+                        <Image Source="Include/ico.png"  Height="100" Width="100"></Image>
+                        <TextBox Text="Icon"></TextBox>
+                        </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem>pic2
-                        <!--<Image Source="Include/black_dots.png" Height="100" Width="100"></Image>-->
+                    <ListBoxItem>
+                        <StackPanel>
+                            <Image Source="Include/black_dots.png" Height="100" Width="100"></Image>
+                            <TextBox Text="black dots"></TextBox>
+                        </StackPanel>
+                        
                     </ListBoxItem>
                 </ListBox>
             </StackPanel>
