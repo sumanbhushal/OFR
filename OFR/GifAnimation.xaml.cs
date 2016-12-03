@@ -29,9 +29,9 @@ namespace OFR
             FloaterImagerController floaterImagerController = new FloaterImagerController();
 
             
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < 11; j++)
+                for (int j = 0; j < 9; j++)
                 {
                     var floaterImage = floaterImagerController.LoadAnimationImage("blackdots.gif");
                     //floaterImagerController.CombineRotationWithSkewAnimation(floaterImage);

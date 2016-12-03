@@ -41,14 +41,14 @@ namespace OFR.Controller
             DoubleAnimation da = new DoubleAnimation
             {
                 From = 0,
-                To = 75,
+                To = 15,
                 AutoReverse = true,
-                Duration = new Duration(TimeSpan.FromSeconds(60)),
+                Duration = new Duration(TimeSpan.FromSeconds(10)),
                 RepeatBehavior = RepeatBehavior.Forever
             };
             RotateTransform rt = new RotateTransform();
             imageForAnimation.RenderTransform = rt;
-            imageForAnimation.RenderTransformOrigin = new Point(0.75, 0.75);
+            imageForAnimation.RenderTransformOrigin = new Point(0.05, 0.05);
             rt.BeginAnimation(RotateTransform.AngleProperty,da);
         }
 
@@ -128,6 +128,7 @@ namespace OFR.Controller
         {
             Image imageToReturn = new Image();
             imageToReturn.Opacity = 0.18;
+            imageToReturn.Stretch = Stretch.UniformToFill;
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri(GenerateImageSourceUri(imageName));

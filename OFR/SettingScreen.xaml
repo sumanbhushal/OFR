@@ -19,14 +19,14 @@
                     <TextBlock Text="Optical Floater Remover"></TextBlock>
                 </StackPanel>
             </DockPanel>
-            <Grid x:Name="ImageGrid" Height="520">
+            <Grid x:Name="ImageGrid" Height="520" Margin="15,0,15,15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*">
                     </ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
                 <Border x:Name="ImageBorder" BorderBrush="Blue" BorderThickness="2">
-                    <Grid x:Name="Gride4X4">
+                <Grid x:Name="Gride4X4" Margin="15,15,15,45">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
@@ -42,26 +42,21 @@
                     </Grid>
                 </Border>
             <!--<Image Source="{Binding DisplaySelectImagePath}" Name="PreviewImage" Grid.Column="0" Height="350" HorizontalAlignment="Left" Margin="60,0,0,0"></Image>-->
-            <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,0,0">
                 <ListBox Name="LboxItem" SelectionMode="Single" SelectionChanged="LboxItemSelectionChanged">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"></WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBoxItem>
-                        <StackPanel>
-                        <Image Source="Include/ico.png"  Height="100" Width="100"></Image>
-                        <TextBox Text="Icon"></TextBox>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <StackPanel>
-                            <Image Source="Include/black_dots.png" Height="100" Width="100"></Image>
-                            <TextBox Text="black dots"></TextBox>
-                        </StackPanel>
-                        
-                    </ListBoxItem>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ImageSourceLocation}" Height="100" Width="100"></Image>
+                                <TextBlock Text="{Binding ImageName}" Visibility="Hidden" />
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
         </Grid>
