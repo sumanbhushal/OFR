@@ -14,7 +14,7 @@
         <StackPanel>
             <DockPanel LastChildFill="False">
                 <StackPanel DockPanel.Dock="Left" Height="25" Margin="15" Orientation="Horizontal">
-                    <Image Source="Include/ico.png"></Image>
+                    <Image Source="Include/eyeland_logo.png"></Image>
                     <TextBlock Text="Optical Floater Remover"></TextBlock>
                 </StackPanel>
             </DockPanel>
@@ -59,7 +59,7 @@
                 </ListBox>
                 <StackPanel VerticalAlignment="Center" Margin="10">
                     <Label  FontWeight="Bold" >Opacity</Label>
-                    <Slider Minimum="0.01" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.02" IsSnapToTickEnabled="True" ValueChanged="opacity_ValueChanged" IsMoveToPointEnabled="True" />
+                    <Slider Value="0.18" Minimum="0.01" Maximum="0.5" TickPlacement="BottomRight" TickFrequency="0.02" IsSnapToTickEnabled="True" ValueChanged="opacity_ValueChanged" IsMoveToPointEnabled="True"  />
                 </StackPanel>
             </StackPanel>
         </Grid>

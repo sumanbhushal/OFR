@@ -139,5 +139,22 @@ namespace OFR.Controller
             //return RotationAnimation(imageToReturn);
             return imageToReturn;
         }
+
+        public Image LoadAnimationImageWithOpacity(string imageName, double opacityValue)
+        {
+            //MessageBox.Show(imageName + " " + opacityValue);
+            Image imageToReturn = new Image();
+            imageToReturn.Opacity = opacityValue;
+            imageToReturn.Stretch = Stretch.UniformToFill;
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(GenerateImageSourceUri(imageName));
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(imageToReturn, image);
+            //imageToReturn.Source = image;
+
+            //return RotationAnimation(imageToReturn);
+            return imageToReturn;
+        }
     }
 }

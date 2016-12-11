@@ -21,19 +21,20 @@ namespace OFR
     /// </summary>
     public partial class SettingScreen : Window
     {
+        private string setImageName;
+        private double setNewOpacityValue;
         private readonly FloaterImagerController _floaterImagerController = new FloaterImagerController();
+        List<FloaterImage> fImages = new List<FloaterImage>();
         public SettingScreen()
         {
             InitializeComponent();
-            List<FloaterImage> fImages = new List<FloaterImage>(); 
-            fImages.Add(new FloaterImage() {ImageName = "blackdots.gif", ImageSourceLocation = "pack://application:,,,/Include/blackdots.gif" });
-            fImages.Add(new FloaterImage() { ImageName = "black_dots.png", ImageSourceLocation = "pack://application:,,,/Include/black_dots.png" });
-            LboxItem.ItemsSource = fImages;
-
+            PopulateListViewWithImage();
+             
             var firstItemFromList = fImages.First();
             var imagerName = firstItemFromList.ImageName;
-            LoadSelectedAnimatedImageWithImageName(imagerName);
-
+            setImageName = imagerName;
+            //LoadSelectedAnimatedImageWithImageName(setImageName);
+            //LoadSelectedAnimatedImageWithImageNameAndOpacityValue(setImageName, setNewOpacityValue);
             //var floaterImage = floaterImagerController.LoadAnimationImage("blackdots.gif");
             //BitmapImage image = new BitmapImage();
             //image.BeginInit();
@@ -41,6 +42,13 @@ namespace OFR
             //image.EndInit();
             //PreviewImage.Source = image;
 
+        }
+
+        private void PopulateListViewWithImage()
+        {
+            fImages.Add(new FloaterImage() { ImageName = "blackdots.gif", ImageSourceLocation = "pack://application:,,,/Include/blackdots.gif" });
+            fImages.Add(new FloaterImage() { ImageName = "black_dots.png", ImageSourceLocation = "pack://application:,,,/Include/black_dots.png" });
+            LboxItem.ItemsSource = fImages;
         }
 
         private void LboxItemSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,8 +61,57 @@ namespace OFR
                 ImgName = (obj as FloaterImage).ImageName;
                 //MessageBox.Show((obj as FloaterImage).ImageName);
             }
-            ClearGirdData(ImgName);
+            setImageName = ImgName;
+            ClearGirdDataWithOpacity(setImageName, setNewOpacityValue);
+            //ClearGirdData(setImageName);
 
+        }
+
+        private void ClearGirdDataWithOpacity(string imgName, double opacityValue)
+        {
+            //MessageBox.Show(imgName + opacityValue);
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    foreach (UIElement control in Gride4X4.Children)
+                    {
+                        if (Grid.GetRow(control) == j && Grid.GetColumn(control) == i)
+                        {
+                            Gride4X4.Children.Remove(control);
+                            break;
+                        }
+                    }
+                }
+            }
+            LoadSelectedAnimatedImageWithImageNameAndOpacityValue(imgName, opacityValue);
+
+        }
+        private void LoadSelectedAnimatedImageWithImageNameAndOpacityValue(string imgName, double opacityValue)
+        {
+           // MessageBox.Show(imgName + " " + opacityValue);
+            ImageBrush backgroundImageBrush = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(
+                new Uri(
+                   "pack://application:,,,/Include/setting_background.JPG"));
+            backgroundImageBrush.ImageSource = image.Source;
+            backgroundImageBrush.Stretch = Stretch.Uniform;
+            ImageBorder.Background = backgroundImageBrush;
+
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+
+                    var floaterImage = _floaterImagerController.LoadAnimationImageWithOpacity(imgName, opacityValue);
+                    _floaterImagerController.RotationAnimation(floaterImage);
+                    Grid.SetColumn(floaterImage, i);
+                    Grid.SetRow(floaterImage, j);
+                    Gride4X4.Children.Add(floaterImage);
+
+                }
+            }
         }
 
         private void ClearGirdData(string imgName)
@@ -76,6 +133,7 @@ namespace OFR
             LoadSelectedAnimatedImageWithImageName(imgName);
 
         }
+
 
         private void LoadSelectedAnimatedImageWithImageName(string imgName)
         {
@@ -139,9 +197,21 @@ namespace OFR
             // ... Get Value.
             if (slider != null)
             {
-                double value = slider.Value;
-                // ... Set Window Title.
-                this.Title = "Value: " + value.ToString("0.000") + "/" + slider.Maximum;
+                double OpacityValue = slider.Value;
+                string new_opacity_value = OpacityValue.ToString("0.00");
+                setNewOpacityValue = OpacityValue;
+                if (setImageName == null)
+                {
+                    setImageName = "blackdots.gif";
+                    ClearGirdDataWithOpacity(setImageName, setNewOpacityValue);
+                }
+                else
+                {
+                    ClearGirdDataWithOpacity(setImageName, setNewOpacityValue);
+                }
+                
+                //MessageBox.Show(new_opacity_value);
+                //this.Title = "Value: " + value.ToString("0.00") + "/" + slider.Maximum;
             }
         }
     }
