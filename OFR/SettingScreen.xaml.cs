@@ -131,6 +131,18 @@ namespace OFR
         //    }
             
         //}
-        
+
+        private void opacity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // ... Get Slider reference.
+            var slider = sender as Slider;
+            // ... Get Value.
+            if (slider != null)
+            {
+                double value = slider.Value;
+                // ... Set Window Title.
+                this.Title = "Value: " + value.ToString("0.000") + "/" + slider.Maximum;
+            }
+        }
     }
 }

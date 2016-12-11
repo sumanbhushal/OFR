@@ -6,11 +6,10 @@
         xmlns:local="clr-namespace:OFR"
         mc:Ignorable="d"
         Title="Setting"
-        Icon="Include/ico.png"
+        Icon="Include/eyeland_logo.png"
         WindowState="Maximized"
         MinHeight="620"
-        MinWidth="520"
-        Background="Black">
+        MinWidth="520">
     
         <StackPanel>
             <DockPanel LastChildFill="False">
@@ -42,8 +41,8 @@
                     </Grid>
                 </Border>
             <!--<Image Source="{Binding DisplaySelectImagePath}" Name="PreviewImage" Grid.Column="0" Height="350" HorizontalAlignment="Left" Margin="60,0,0,0"></Image>-->
-            <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,0,0">
-                <ListBox Name="LboxItem" SelectionMode="Single" SelectionChanged="LboxItemSelectionChanged">
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,0,0" Width="250">
+                <ListBox Name="LboxItem" SelectionMode="Single" SelectionChanged="LboxItemSelectionChanged" Width="150" HorizontalAlignment="Left">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">
@@ -58,6 +57,10 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <StackPanel VerticalAlignment="Center" Margin="10">
+                    <Label  FontWeight="Bold" >Opacity</Label>
+                    <Slider Minimum="0.01" Maximum="1" TickPlacement="BottomRight" TickFrequency="0.02" IsSnapToTickEnabled="True" ValueChanged="opacity_ValueChanged" IsMoveToPointEnabled="True" />
+                </StackPanel>
             </StackPanel>
         </Grid>
             
