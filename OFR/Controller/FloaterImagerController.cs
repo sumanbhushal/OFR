@@ -15,10 +15,40 @@ namespace OFR.Controller
 {
     public class FloaterImagerController
     {
-
-        public string GenerateImageSourceUri(string imageName)
+        private string _animationImageName;
+        private double _imageOpacityValue;
+        public void SetImageNameAndOpacityValue(string imageName, double opacityValue)
         {
-            return "pack://application:,,,/Include/" + imageName;
+            
+            _animationImageName = imageName;
+            _imageOpacityValue = opacityValue;
+            
+        }
+
+        public string GenerateImageSourceUri(string imgName)
+        {
+            
+            if (!string.IsNullOrEmpty(_animationImageName))
+            {
+                MessageBox.Show(_animationImageName);
+                return "pack://application:,,,/Include/" + _animationImageName;
+
+            }
+            return "pack://application:,,,/Include/" + imgName;
+        }
+
+        public string GenerateImageSourceUri2()
+        {
+
+            if (string.IsNullOrEmpty(_animationImageName))
+            {
+                MessageBox.Show(_animationImageName);
+                _animationImageName = "blackdots.gif";
+                return "pack://application:,,,/Include/" + _animationImageName;
+
+            }
+            
+            return "pack://application:,,,/Include/" + _animationImageName;
         }
 
         public Image ImagerLoader()
@@ -132,6 +162,22 @@ namespace OFR.Controller
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri(GenerateImageSourceUri(imageName));
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(imageToReturn, image);
+            //imageToReturn.Source = image;
+
+            //return RotationAnimation(imageToReturn);
+            return imageToReturn;
+        }
+
+        public Image LoadAnimationImageFromMain()
+        {
+            Image imageToReturn = new Image();
+            imageToReturn.Opacity = 0.18;
+            imageToReturn.Stretch = Stretch.UniformToFill;
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(GenerateImageSourceUri2());
             image.EndInit();
             ImageBehavior.SetAnimatedSource(imageToReturn, image);
             //imageToReturn.Source = image;

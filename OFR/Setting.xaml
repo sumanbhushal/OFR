@@ -1,4 +1,4 @@
-﻿<Window x:Class="OFR.SettingScreen"
+﻿<Window x:Class="OFR.Setting"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,36 +10,39 @@
         WindowState="Maximized"
         MinHeight="620"
         MinWidth="520">
-    
-        <StackPanel>
-            <DockPanel LastChildFill="False">
-                <StackPanel DockPanel.Dock="Left" Height="25" Margin="15" Orientation="Horizontal">
-                    <Image Source="Include/eyeland_logo.png"></Image>
-                    <TextBlock Text="Optical Floater Remover"></TextBlock>
-                </StackPanel>
-            </DockPanel>
-            <Grid x:Name="ImageGrid" Height="520" Margin="15,0,15,15">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*">
-                    </ColumnDefinition>
-                    <ColumnDefinition Width="1*"></ColumnDefinition>
+    <StackPanel>
+        <DockPanel LastChildFill="False">
+            <StackPanel DockPanel.Dock="Left" Height="25" Margin="15" Orientation="Horizontal">
+                <Image Source="Include/eyeland_logo.png"></Image>
+                <TextBlock Text="Optical Floater Remover"></TextBlock>
+            </StackPanel>
+        </DockPanel>
+        <Grid x:Name="ImageGrid" Height="520" Margin="15,0,15,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*">
+                </ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-                <Border x:Name="ImageBorder" BorderBrush="Blue" BorderThickness="2">
+            <Border x:Name="ImageBorder" BorderBrush="Blue" BorderThickness="2">
                 <Grid x:Name="Gride4X4" Margin="15,15,15,45">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </Border>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Border>
             <!--<Image Source="{Binding DisplaySelectImagePath}" Name="PreviewImage" Grid.Column="0" Height="350" HorizontalAlignment="Left" Margin="60,0,0,0"></Image>-->
             <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,0,0" Width="250">
                 <ListBox Name="LboxItem" SelectionMode="Single" SelectionChanged="LboxItemSelectionChanged" Width="150" HorizontalAlignment="Left">
@@ -52,21 +55,20 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ImageSourceLocation}" Height="100" Width="100"></Image>
                                 <TextBlock Text="{Binding ImageName}" Visibility="Hidden" />
-                                
+
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <StackPanel VerticalAlignment="Center" Margin="10">
                     <Label  FontWeight="Bold" >Opacity</Label>
-                    <Slider Value="0.18" Minimum="0.01" Maximum="0.5" TickPlacement="BottomRight" TickFrequency="0.02" IsSnapToTickEnabled="True" ValueChanged="opacity_ValueChanged" IsMoveToPointEnabled="True"  />
+                    <Slider Minimum="0.01" Maximum="0.5" TickPlacement="BottomRight" TickFrequency="0.02" IsSnapToTickEnabled="True" ValueChanged="opacity_ValueChanged" IsMoveToPointEnabled="True"  />
                 </StackPanel>
                 <DockPanel Margin="15,30,15,15">
                     <Button Content="Save" Height="35" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="DodgerBlue" Foreground="FloralWhite" Click="SetImageAndOpacityToScreen"/>
                 </DockPanel>
             </StackPanel>
         </Grid>
-            
-        </StackPanel>
-        
+
+    </StackPanel>
 </Window>

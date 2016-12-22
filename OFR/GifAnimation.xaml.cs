@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OFR.Controller;
 using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace OFR
 {
@@ -22,18 +23,44 @@ namespace OFR
     public partial class GifAnimation : Window
     {
         private System.Windows.Forms.NotifyIcon notifyIcon = null;
-
+        //private string floaterImageName;
+        BaseController floaterImagerController = new BaseController();
         public GifAnimation()
         {
             InitializeComponent();
-            FloaterImagerController floaterImagerController = new FloaterImagerController();
+            ClearGirdData();
 
             
+            
+        }
+
+        private void ClearGirdData()
+        {
+            //MessageBox.Show(imgName + opacityValue); used
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    var floaterImage = floaterImagerController.LoadAnimationImage("blackdots.gif");
+                    foreach (UIElement control in mainGrid.Children)
+                    {
+                        if (Grid.GetRow(control) == j && Grid.GetColumn(control) == i)
+                        {
+                            mainGrid.Children.Remove(control);
+                            break;
+                        }
+                    }
+                }
+            }
+            LoadDataInGrid();
+        }
+
+        private void LoadDataInGrid()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    var floaterImage = floaterImagerController.LoadAnimationImageFromMain();
                     //floaterImagerController.CombineRotationWithSkewAnimation(floaterImage);
                     floaterImagerController.RotationAnimation(floaterImage);
                     Grid.SetColumn(floaterImage, i);

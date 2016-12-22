@@ -24,7 +24,7 @@ namespace OFR
         private string setImageName;
         private double setNewOpacityValue;
         private readonly FloaterImagerController _floaterImagerController = new FloaterImagerController();
-        List<FloaterImage> fImages = new List<FloaterImage>();
+        private readonly List<FloaterImage> fImages = new List<FloaterImage>();
         public SettingScreen()
         {
             InitializeComponent();
@@ -213,6 +213,16 @@ namespace OFR
                 //MessageBox.Show(new_opacity_value);
                 //this.Title = "Value: " + value.ToString("0.00") + "/" + slider.Maximum;
             }
+        }
+
+        private void SetImageAndOpacityToScreen(object sender, RoutedEventArgs e)
+        {
+           _floaterImagerController.SetImageNameAndOpacityValue(setImageName, setNewOpacityValue);
+            //MessageBox.Show(setImageName + " " + setNewOpacityValue);
+
+            GifAnimation ani = new GifAnimation();
+            ani.Show();
+
         }
     }
 }
