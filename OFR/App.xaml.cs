@@ -13,6 +13,6 @@ namespace OFR
     /// </summary>
     public partial class App : Application
     {
-
+        
     }
 }

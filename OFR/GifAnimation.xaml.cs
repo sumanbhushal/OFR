@@ -22,16 +22,31 @@ namespace OFR
     /// </summary>
     public partial class GifAnimation : Window
     {
-        private System.Windows.Forms.NotifyIcon notifyIcon = null;
-        //private string floaterImageName;
+        System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
         BaseController floaterImagerController = new BaseController();
         public GifAnimation()
         {
             InitializeComponent();
             ClearGirdData();
+            notifyIcon.Icon = new System.Drawing.Icon("notify.ico");
+            notifyIcon.Visible = true;
 
-            
-            
+            System.Windows.Forms.ContextMenu notifyContextMenu = new System.Windows.Forms.ContextMenu();
+            notifyContextMenu.MenuItems.Add("Settings", new EventHandler(OpenSettings));
+            notifyContextMenu.MenuItems.Add("Exit", new EventHandler(Exit));
+            notifyIcon.ContextMenu = notifyContextMenu;
+
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void OpenSettings(object sender, EventArgs e)
+        {
+            Setting openSetting = new Setting();
+            openSetting.Show();
         }
 
         private void ClearGirdData()

@@ -30,7 +30,6 @@ namespace OFR.Controller
             
             if (!string.IsNullOrEmpty(_animationImageName))
             {
-                MessageBox.Show(_animationImageName);
                 return "pack://application:,,,/Include/" + _animationImageName;
 
             }
